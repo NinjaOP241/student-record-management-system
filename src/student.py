@@ -53,5 +53,5 @@ class Student:
         print("Subject 2 Marks:", self.subject2_marks)
         print("Subject 3 Marks:", self.subject3_marks)
         print("Total Marks:", self.calculate_total())
-        print("Average Marks:", self.calculate_average())
+        print(f"Average Marks: {self.calculate_average():.2f}")
         print("Result:", self.get_result(passing_marks))

@@ -39,16 +39,33 @@ def parse_arguments():
     return parser.parse_args()
 
 
+def print_heading(title):
+    """Print a simple heading for a menu operation."""
+    print("\n" + "-" * 50)
+    print(title)
+    print("-" * 50)
+
+
+def read_integer(prompt):
+    """Read an integer without closing the menu after bad input."""
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Please enter a valid whole number.")
+
+
 def add_student(manager):
     """Read student details and add a new student."""
-    
-    student_id = int(input("Enter Student ID: "))
+
+    print_heading("ADD STUDENT")
+    student_id = read_integer("Enter Student ID: ")
     name = input("Enter Name: ")
     department = input("Enter Department: ")
-    semester = int(input("Enter Semester: "))
-    subject1_marks = int(input("Enter Subject 1 Marks: "))
-    subject2_marks = int(input("Enter Subject 2 Marks: "))
-    subject3_marks = int(input("Enter Subject 3 Marks: "))
+    semester = read_integer("Enter Semester: ")
+    subject1_marks = read_integer("Enter Subject 1 Marks: ")
+    subject2_marks = read_integer("Enter Subject 2 Marks: ")
+    subject3_marks = read_integer("Enter Subject 3 Marks: ")
 
     student = Student(
         student_id,
@@ -69,8 +86,9 @@ def add_student(manager):
 
 def search_by_id(manager):
     """Search for and display a student by ID."""
-    
-    student_id = int(input("Enter Student ID: "))
+
+    print_heading("SEARCH BY STUDENT ID")
+    student_id = read_integer("Enter Student ID: ")
 
     student = manager.search_student(student_id)
 
@@ -84,6 +102,7 @@ def search_by_id(manager):
 def search_by_name(manager):
     """Search for and display students by name."""
 
+    print_heading("SEARCH BY NAME")
     name = input("Enter Student Name: ")
 
     students = manager.search_by_name(name)
@@ -100,6 +119,7 @@ def search_by_name(manager):
 def search_by_department(manager):
     """Search for and display students by department."""
 
+    print_heading("SEARCH BY DEPARTMENT")
     department = input("Enter Department: ")
 
     students = manager.search_by_department(department)
@@ -116,7 +136,8 @@ def search_by_department(manager):
 def search_by_average(manager):
     """Display students whose average exceeds the given threshold."""
 
-    threshold = float(input("Enter average marks threshold: "))
+    print_heading("SEARCH BY AVERAGE MARKS")
+    threshold = read_integer("Enter average marks threshold: ")
 
     students = manager.search_by_average(threshold)
 
@@ -132,7 +153,8 @@ def search_by_average(manager):
 def update_marks(manager):
     """Update the marks of an existing student."""
 
-    student_id = int(input("Enter Student ID: "))
+    print_heading("UPDATE MARKS")
+    student_id = read_integer("Enter Student ID: ")
 
     student = manager.search_student(student_id)
 
@@ -140,9 +162,9 @@ def update_marks(manager):
         print(f"No student found with ID {student_id}.")
         return
 
-    subject1_marks = int(input("Enter new Subject 1 Marks: "))
-    subject2_marks = int(input("Enter new Subject 2 Marks: "))
-    subject3_marks = int(input("Enter new Subject 3 Marks: "))
+    subject1_marks = read_integer("Enter new Subject 1 Marks: ")
+    subject2_marks = read_integer("Enter new Subject 2 Marks: ")
+    subject3_marks = read_integer("Enter new Subject 3 Marks: ")
 
     student.update_marks(
         subject1_marks,
@@ -156,7 +178,8 @@ def update_marks(manager):
 def remove_student(manager):
     """Remove a student by ID."""
 
-    student_id = int(input("Enter Student ID: "))
+    print_heading("REMOVE STUDENT")
+    student_id = read_integer("Enter Student ID: ")
 
     try:
         manager.remove_student(student_id)
@@ -168,6 +191,7 @@ def remove_student(manager):
 def save_records(manager, file_handler):
     """Save current records to a user-specified output file."""
 
+    print_heading("SAVE RECORDS")
     filepath = input("Enter output file path (example: data/output.txt): ")
 
     file_format = input(
@@ -188,17 +212,20 @@ def save_records(manager, file_handler):
 def display_menu():
     """Display the main program menu."""
 
-    print("\n========== STUDENT RECORD MANAGEMENT ==========")
-    print("1. Add Student")
-    print("2. Display All Students")
-    print("3. Search by Student ID")
-    print("4. Search by Name")
-    print("5. Search by Department")
-    print("6. Search by Average")
-    print("7. Update Marks")
-    print("8. Remove Student")
-    print("9. Save Records")
-    print("10. Exit")
+    print("\n" + "=" * 50)
+    print("STUDENT RECORD MANAGEMENT".center(50))
+    print("=" * 50)
+    print("1. Add student")
+    print("2. Display all students")
+    print("3. Search by student ID")
+    print("4. Search by name")
+    print("5. Search by department")
+    print("6. Search by average marks")
+    print("7. Update marks")
+    print("8. Remove student")
+    print("9. Save records")
+    print("0. Exit")
+    print("=" * 50)
 
 
 def main():
@@ -255,7 +282,7 @@ def main():
                     file_handler
                 )
 
-            elif choice == "10":
+            elif choice == "0":
                 print("Exiting...")
                 break
 
