@@ -125,9 +125,11 @@ class FileHandler:
                 "name": student.name,
                 "department": student.department,
                 "semester": student.semester,
-                "subject1_marks": student.subject1_marks,
-                "subject2_marks": student.subject2_marks,
-                "subject3_marks": student.subject3_marks
+                "marks": {
+                    "subject1": student.subject1_marks,
+                    "subject2": student.subject2_marks,
+                    "subject3": student.subject3_marks
+                }
             })
 
         with open(filepath, "w") as output_file:
@@ -147,9 +149,9 @@ class FileHandler:
                 record["name"],
                 record["department"],
                 record["semester"],
-                record["subject1_marks"],
-                record["subject2_marks"],
-                record["subject3_marks"]
+                record["marks"]["subject1"],
+                record["marks"]["subject2"],
+                record["marks"]["subject3"]
             )
 
             students.append(student)
