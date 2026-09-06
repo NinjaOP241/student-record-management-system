@@ -1,0 +1,57 @@
+[
+  {
+    "student_id": 101,
+    "name": "Rahul",
+    "department": "Computer Science",
+    "semester": 5,
+    "marks": {
+      "subject1": 78,
+      "subject2": 82,
+      "subject3": 69
+    }
+  },
+  {
+    "student_id": 102,
+    "name": "Amit",
+    "department": "Information Technology",
+    "semester": 5,
+    "marks": {
+      "subject1": 65,
+      "subject2": 71,
+      "subject3": 80
+    }
+  },
+  {
+    "student_id": 103,
+    "name": "Priya",
+    "department": "Computer Science",
+    "semester": 5,
+    "marks": {
+      "subject1": 90,
+      "subject2": 88,
+      "subject3": 92
+    }
+  },
+  {
+    "student_id": 104,
+    "name": "Neha",
+    "department": "Electronics",
+    "semester": 5,
+    "marks": {
+      "subject1": 55,
+      "subject2": 61,
+      "subject3": 58
+    }
+  },
+  {
+    "student_id": 105,
+    "name": "Rohan",
+    "department": "Computer Science",
+    "semester": 5,
+    "marks": {
+      "subject1": 35,
+      "subject2": 75,
+      "subject3": 68
+    }
+  }
+]
